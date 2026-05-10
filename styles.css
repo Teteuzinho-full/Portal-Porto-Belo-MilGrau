@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   --ink: #071733;
   --nav: #09295a;
   --nav-deep: #061d42;
@@ -1029,8 +1029,7 @@ main {
   }
 
   .hero-banner {
-    height: clamp(150px, 44vw, 260px);
-    background-position: center;
+    display: none;
   }
 
   .headline-strip {
@@ -1082,6 +1081,13 @@ main {
     right: 12px;
     bottom: 12px;
     width: calc(100% - 24px);
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .privacy-card button {
+    width: 100%;
+    min-height: 48px;
+    font-size: 1rem;
   }
 }
-
