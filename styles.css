@@ -76,14 +76,18 @@ img {
 .compact-logo {
   display: inline-flex;
   align-items: center;
+  gap: 10px;
   justify-content: center;
-  font-size: 0;
-  line-height: 0;
+  min-width: 96px;
+  color: #ffffff;
+  font-family: "Barlow Condensed", "Inter", Arial, sans-serif;
+  line-height: 0.92;
+  text-transform: uppercase;
 }
 
 .compact-logo img {
-  width: 52px;
-  height: 52px;
+  width: 58px;
+  height: 58px;
   object-fit: contain;
 }
 
@@ -359,7 +363,7 @@ main {
 .headline-strip {
   position: relative;
   display: grid;
-  grid-template-columns: 140px 1fr;
+  grid-template-columns: 140px repeat(4, minmax(180px, 1fr));
   gap: 24px;
   align-items: center;
   margin: 28px auto 30px;
@@ -403,10 +407,12 @@ main {
   gap: 14px;
   align-items: start;
   min-width: 0;
+  padding-right: 16px;
+  border-right: 1px solid var(--line);
 }
 
 .mini-news:last-of-type {
-  /* sem borda extra */
+  border-right: 0;
 }
 
 .mini-news img {
@@ -457,7 +463,6 @@ main {
   right: 18px;
   display: flex;
   gap: 8px;
-  align-items: center;
 }
 
 .strip-controls button {
@@ -471,12 +476,6 @@ main {
   font-size: 2rem;
   line-height: 1;
   cursor: pointer;
-  transition: background 180ms ease, color 180ms ease, opacity 180ms ease;
-}
-
-.strip-controls button:hover:not(:disabled) {
-  background: var(--yellow);
-  color: #06142b;
 }
 
 .content-grid {
@@ -785,14 +784,20 @@ main {
 }
 
 .footer-brand {
-  display: inline-flex;
-  align-items: center;
+  font-family: "Barlow Condensed", "Inter", Arial, sans-serif;
+  text-transform: uppercase;
 }
 
-.footer-brand img {
-  width: 120px;
-  height: 120px;
-  object-fit: contain;
+.footer-brand span {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.footer-brand strong {
+  color: var(--yellow);
+  font-size: 2.3rem;
+  line-height: 0.9;
 }
 
 .footer-links {
@@ -935,7 +940,7 @@ main {
   }
 
   .headline-strip {
-    /* grid já é 140px 1fr, sem alteração necessária */
+    grid-template-columns: 150px repeat(2, minmax(220px, 1fr));
   }
 
   .content-grid {
@@ -1003,13 +1008,9 @@ main {
   .category-grid.layout-mixed,
   .promo-strip,
   .ad-grid,
-  .footer-inner {
-    grid-template-columns: 1fr;
-  }
-
+  .footer-inner,
   .privacy-card {
-    grid-template-columns: 1fr auto;
-    align-items: center;
+    grid-template-columns: 1fr;
   }
 
   .category-grid.layout-featured .category-card:first-child,
@@ -1028,7 +1029,8 @@ main {
   }
 
   .hero-banner {
-    display: none;
+    height: clamp(150px, 44vw, 260px);
+    background-position: center;
   }
 
   .headline-strip {
