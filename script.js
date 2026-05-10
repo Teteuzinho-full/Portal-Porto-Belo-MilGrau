@@ -70,12 +70,63 @@ if (searchButton && searchPanel && searchInput) {
 }
 
 if (strip && stripButtons.length === 2) {
+  const items = Array.from(strip.querySelectorAll(".mini-news"));
+  let current = 0;
+
+  const showItem = (index) => {
+    items.forEach((item, i) => {
+      item.classList.toggle("is-active", i === index);
+      item.setAttribute("aria-hidden", i !== index ? "true" : "false");
+    });
+    stripButtons[0].disabled = index === 0;
+    stripButtons[1].disabled = index === items.length - 1;
+  };
+
+  // Estado inicial
+  items.forEach((item) => {
+    item.style.display = "none";
+    item.setAttribute("aria-hidden", "true");
+  });
+
+  const styleTag = document.createElement("style");
+  styleTag.textContent = `
+    .mini-news { display: none !important; }
+    .mini-news.is-active {
+      display: grid !important;
+      animation: fadeSlide 220ms ease both;
+    }
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateX(18px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    .strip-controls button:disabled {
+      opacity: 0.35;
+      cursor: default;
+    }
+  `;
+  document.head.appendChild(styleTag);
+
+  showItem(current);
+
   stripButtons[0].addEventListener("click", () => {
-    strip.scrollBy({ left: -260, behavior: "smooth" });
+    if (current > 0) {
+      current--;
+      // Anima para a esquerda
+      styleTag.textContent = styleTag.textContent.replace(
+        /translateX\([^)]+\)/g, "translateX(-18px)"
+      );
+      showItem(current);
+    }
   });
 
   stripButtons[1].addEventListener("click", () => {
-    strip.scrollBy({ left: 260, behavior: "smooth" });
+    if (current < items.length - 1) {
+      current++;
+      styleTag.textContent = styleTag.textContent.replace(
+        /translateX\([^)]+\)/g, "translateX(18px)"
+      );
+      showItem(current);
+    }
   });
 }
 
