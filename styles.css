@@ -1030,8 +1030,11 @@ main {
 
   .hero-banner {
     display: block;
-    height: clamp(120px, 42vw, 240px);
-    background-position: center;
+    height: auto;
+    aspect-ratio: 1516 / 400;
+    background:
+      url("porto-belo-banner.png") center / contain no-repeat,
+      #02070b;
   }
 
   .headline-strip {
