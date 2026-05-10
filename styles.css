@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   --ink: #071733;
   --nav: #09295a;
   --nav-deep: #061d42;
@@ -50,7 +50,7 @@ img {
   height: clamp(180px, 21.25vw, 326px);
   background:
     linear-gradient(90deg, rgba(0, 0, 0, 0.16), transparent 40%, rgba(0, 0, 0, 0.12)),
-    url("assets/porto-belo-banner.png") center / cover no-repeat;
+    url("porto-belo-banner.png") center / cover no-repeat;
 }
 
 .category-nav {
@@ -295,7 +295,7 @@ main {
   color: #ffffff;
   background:
     linear-gradient(135deg, rgba(0, 0, 0, 0.92), rgba(7, 23, 51, 0.7)),
-    url("assets/anuncie-aqui.png") center / cover no-repeat;
+    url("anuncie-aqui.png") center / cover no-repeat;
   box-shadow: var(--shadow);
 }
 
@@ -606,7 +606,7 @@ main {
   color: #ffffff;
   background:
     linear-gradient(135deg, rgba(7, 23, 51, 0.96), rgba(11, 50, 109, 0.9)),
-    url("assets/porto-belo-banner.png") center / cover no-repeat;
+    url("porto-belo-banner.png") center / cover no-repeat;
   border-radius: 8px;
   box-shadow: var(--shadow);
 }
@@ -1003,3 +1003,4 @@ main {
     width: calc(100% - 24px);
   }
 }
+
