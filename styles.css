@@ -1029,7 +1029,9 @@ main {
   }
 
   .hero-banner {
-    display: none;
+    display: block;
+    height: clamp(120px, 42vw, 240px);
+    background-position: center;
   }
 
   .headline-strip {
