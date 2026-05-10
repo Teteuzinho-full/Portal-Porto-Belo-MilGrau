@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   --ink: #071733;
   --nav: #09295a;
   --nav-deep: #061d42;
@@ -363,7 +363,7 @@ main {
 .headline-strip {
   position: relative;
   display: grid;
-  grid-template-columns: 140px repeat(4, minmax(180px, 1fr));
+  grid-template-columns: 140px 1fr;
   gap: 24px;
   align-items: center;
   margin: 28px auto 30px;
@@ -407,12 +407,10 @@ main {
   gap: 14px;
   align-items: start;
   min-width: 0;
-  padding-right: 16px;
-  border-right: 1px solid var(--line);
 }
 
 .mini-news:last-of-type {
-  border-right: 0;
+  /* sem borda extra */
 }
 
 .mini-news img {
@@ -463,6 +461,7 @@ main {
   right: 18px;
   display: flex;
   gap: 8px;
+  align-items: center;
 }
 
 .strip-controls button {
@@ -476,6 +475,12 @@ main {
   font-size: 2rem;
   line-height: 1;
   cursor: pointer;
+  transition: background 180ms ease, color 180ms ease, opacity 180ms ease;
+}
+
+.strip-controls button:hover:not(:disabled) {
+  background: var(--yellow);
+  color: #06142b;
 }
 
 .content-grid {
@@ -940,7 +945,7 @@ main {
   }
 
   .headline-strip {
-    grid-template-columns: 150px repeat(2, minmax(220px, 1fr));
+    /* grid já é 140px 1fr, sem alteração necessária */
   }
 
   .content-grid {
@@ -1008,9 +1013,13 @@ main {
   .category-grid.layout-mixed,
   .promo-strip,
   .ad-grid,
-  .footer-inner,
-  .privacy-card {
+  .footer-inner {
     grid-template-columns: 1fr;
+  }
+
+  .privacy-card {
+    grid-template-columns: 1fr auto;
+    align-items: center;
   }
 
   .category-grid.layout-featured .category-card:first-child,
@@ -1029,8 +1038,7 @@ main {
   }
 
   .hero-banner {
-    height: clamp(150px, 44vw, 260px);
-    background-position: center;
+    display: none;
   }
 
   .headline-strip {
@@ -1084,4 +1092,3 @@ main {
     width: calc(100% - 24px);
   }
 }
-
