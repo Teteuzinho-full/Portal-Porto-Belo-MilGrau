@@ -5,6 +5,13 @@ const strip = document.querySelector(".headline-strip");
 const stripButtons = document.querySelectorAll(".strip-controls button");
 const siteHeader = document.querySelector(".site-header");
 const menuToggle = document.querySelector(".menu-toggle");
+const backToTop = document.createElement("button");
+
+backToTop.className = "back-to-top";
+backToTop.type = "button";
+backToTop.setAttribute("aria-label", "Voltar ao topo");
+backToTop.textContent = "↑";
+document.body.appendChild(backToTop);
 
 const setScrolledHeader = () => {
   if (!siteHeader) {
@@ -18,6 +25,7 @@ const setScrolledHeader = () => {
     : (heroBanner?.offsetHeight || 0) + (categoryNav?.offsetHeight || 0) - 8;
   const shouldCompact = window.scrollY > compactAt;
   siteHeader.classList.toggle("is-scrolled", shouldCompact);
+  backToTop.classList.toggle("is-visible", window.scrollY > 420);
 
   if (!shouldCompact && window.innerWidth > 900) {
     siteHeader.classList.remove("is-menu-open");
@@ -28,6 +36,10 @@ const setScrolledHeader = () => {
 setScrolledHeader();
 window.addEventListener("scroll", setScrolledHeader, { passive: true });
 window.addEventListener("resize", setScrolledHeader);
+
+backToTop.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
 
 if (siteHeader && menuToggle) {
   menuToggle.addEventListener("click", () => {
